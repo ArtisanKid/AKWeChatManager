@@ -1,0 +1,44 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AKWeChatManager (0.1.0):
+    - AFNetworking
+    - AKWeChatSDK
+  - AKWeChatSDK (0.1.0)
+
+DEPENDENCIES:
+  - AKWeChatManager (from `../`)
+  - AKWeChatSDK (from `git@github.com:ArtisanKid/AKWeChatSDK.git`)
+
+EXTERNAL SOURCES:
+  AKWeChatManager:
+    :path: ../
+  AKWeChatSDK:
+    :git: git@github.com:ArtisanKid/AKWeChatSDK.git
+
+CHECKOUT OPTIONS:
+  AKWeChatSDK:
+    :commit: e0836e2acf2f9f45cad24cc9a267d2f7cd3ff764
+    :git: git@github.com:ArtisanKid/AKWeChatSDK.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AKWeChatManager: d68abed2b45d260c4db7553b34544ec5344e913f
+  AKWeChatSDK: bf5483ce6ce9ab5aabaeacff84b18cbebd898c06
+
+PODFILE CHECKSUM: 7973bf3b86569956d01caaa42235b8f65149c9e5
+
+COCOAPODS: 1.1.1
