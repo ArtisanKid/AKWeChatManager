@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AKWeChatManager_Example' do
+  pod 'AKWeChatManager', :path => '../'
+
+  target 'AKWeChatManager_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
