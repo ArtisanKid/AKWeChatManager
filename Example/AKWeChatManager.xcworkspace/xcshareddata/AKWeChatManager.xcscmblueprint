@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "836D9C300FA2CA464ABEB2F1032A588976B3071A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "836D9C300FA2CA464ABEB2F1032A588976B3071A" : 9223372036854775807,
+    "30FD916E3772ABC2885B494540695680A2901C0C" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "618F6D74-E8F7-4320-8009-7972F4A8E1B9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "836D9C300FA2CA464ABEB2F1032A588976B3071A" : "AKWeChatManager\/",
+    "30FD916E3772ABC2885B494540695680A2901C0C" : "AKWeChatSDK\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AKWeChatManager",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/AKWeChatManager.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ArtisanKid\/AKWeChatSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "30FD916E3772ABC2885B494540695680A2901C0C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ArtisanKid\/AKWeChatManager.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "836D9C300FA2CA464ABEB2F1032A588976B3071A"
+    }
+  ]
+}

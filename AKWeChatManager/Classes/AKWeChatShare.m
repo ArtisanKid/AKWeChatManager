@@ -8,15 +8,12 @@
 
 #import "AKWeChatShare.h"
 
-@implementation AKWeChatShare
-
-@end
-
 @implementation AKWeChatShareText
 
 - (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
     SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
     request.bText = YES;
+    request.text = self.text;
     request.scene = scene;
     return request;
 }
@@ -26,80 +23,98 @@
 @implementation AKWeChatShareImage
 
 - (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
+    NSData *imageData = nil;
+    imageData = UIImageJPEGRepresentation(self.image, 1.);
+    if(!imageData.length) {
+        imageData = UIImagePNGRepresentation(self.image);
+    }
+    
+    WXImageObject *image = [WXImageObject object];
+    image.imageData = imageData;
+    
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.thumbImage = self.thumbImage;
+    message.mediaObject = image;
+    
     SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
+    request.scene = scene;
+    request.message = message;
+    return request;
+}
+
+@end
+
+@implementation AKWeChatShareBaseMedia
+
+/**
+ 子类重载此方法
+ 
+ @return WXMediaMessage
+ */
+- (WXMediaMessage *)message {
+    return nil;
+}
+
+- (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
+    SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
+    request.message = [self message];
     request.scene = scene;
     return request;
 }
 
 @end
 
-@implementation AKWeChatShareMedia
-
-@end
-
 @implementation AKWeChatShareWeb
 
-- (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
+- (WXMediaMessage *)message {
     WXWebpageObject *web =  [WXWebpageObject object];
     web.webpageUrl = self.URL;
     
-    WXMediaMessage *media = [WXMediaMessage message];
-    media.title = self.title;
-    media.description = self.description;
-    media.thumbImage = self.thumbImage;
-    media.mediaTagName = self.mediaID;
-    media.mediaObject = web;
-    
-    SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
-    request.message = media;
-    request.scene = scene;
-    return request;
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = self.title;
+    message.description = self.description;
+    message.thumbImage = self.thumbImage;
+    message.mediaTagName = self.mediaID;
+    message.mediaObject = web;
+    return message;
 }
 
 @end
 
 @implementation AKWeChatShareMusic
 
-- (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
+- (WXMediaMessage *)message {
     WXMusicObject *music =  [WXMusicObject object];
     music.musicUrl = self.URL;
-    music.musicLowBandUrl = self.mediaLowBandURL;
-    music.musicDataUrl = self.dataURL;
-    music.musicLowBandDataUrl = self.lowBandDataURL;
+    music.musicLowBandUrl = self.lowBandURL;
+    music.musicDataUrl = self.streamURL;
+    music.musicLowBandDataUrl = self.lowBandStreamURL;
     
-    WXMediaMessage *media = [WXMediaMessage message];
-    media.title = self.title;
-    media.description = self.description;
-    media.thumbImage = self.thumbImage;
-    media.mediaTagName = self.mediaID;
-    media.mediaObject = music;
-    
-    SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
-    request.message = media;
-    request.scene = scene;
-    return request;
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = self.title;
+    message.description = self.description;
+    message.thumbImage = self.thumbImage;
+    message.mediaTagName = self.mediaID;
+    message.mediaObject = music;
+    return message;
 }
 
 @end
 
 @implementation AKWeChatShareVideo
 
-- (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
+- (WXMediaMessage *)message {
     WXVideoObject *video =  [WXVideoObject object];
     video.videoUrl = self.URL;
-    video.videoLowBandUrl = self.mediaLowBandURL;
+    video.videoLowBandUrl = self.lowBandURL;
     
-    WXMediaMessage *media = [WXMediaMessage message];
-    media.title = self.title;
-    media.description = self.description;
-    media.thumbImage = self.thumbImage;
-    media.mediaTagName = self.mediaID;
-    media.mediaObject = video;
-    
-    SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
-    request.message = media;
-    request.scene = scene;
-    return request;
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = self.title;
+    message.description = self.description;
+    message.thumbImage = self.thumbImage;
+    message.mediaTagName = self.mediaID;
+    message.mediaObject = video;
+    return message;
 }
 
 @end

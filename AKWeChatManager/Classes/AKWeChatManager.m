@@ -221,9 +221,6 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.WeChat.qq.com
         
         self.paySuccess = nil;
         self.payFailure = nil;
-    } else if([resp isKindOfClass:[OpenWebviewResp class]]) {
-    } else if([resp isKindOfClass:[OpenTempSessionResp class]]) {
-    } else if([resp isKindOfClass:[AddCardToWXCardPackageResp class]]) {
     }
 }
 

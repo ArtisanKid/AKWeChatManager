@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "AKWeChatShareProtocol.h"
 
-@interface AKWeChatShare : NSObject<AKWeChatShareProtocol>
-
-@end
+#pragma mark - AKWeChatShareText
 
 @interface AKWeChatShareText : NSObject<AKWeChatShareProtocol>
 
 @property (nonatomic, copy) NSString *text;
 
 @end
+
+#pragma mark - AKWeChatShareImage
 
 @interface AKWeChatShareImage : NSObject<AKWeChatShareProtocol>
 
@@ -33,7 +33,14 @@
 
 @end
 
-@interface AKWeChatShareMedia : NSObject
+#pragma mark - AKWeChatShareMedia
+
+@interface AKWeChatShareBaseMedia: NSObject<AKWeChatShareProtocol>
+
+/**
+ 媒体标识，长度不能超过64字节
+ */
+@property (nonatomic, retain) NSString *mediaID;
 
 /**
  标题，长度不能超过512字节
@@ -51,41 +58,47 @@
 @property (nonatomic, retain) UIImage *thumbImage;
 
 /**
- 媒体标识，长度不能超过64字节
- */
-@property (nonatomic, retain) NSString *mediaID;
-
-@end
-
-@interface AKWeChatShareWeb : AKWeChatShareMedia<AKWeChatShareProtocol>
-
-/**
  网页的url地址，长度不能超过10K
  支持普通网页，音乐网页，视频网页等
  */
 @property (nonatomic, retain) NSString *URL;
 
+@end
+
+#pragma mark - AKWeChatShareWeb
+
+@interface AKWeChatShareWeb : AKWeChatShareBaseMedia
+
+@end
+
+#pragma mark - AKWeChatShareMusic
+
+@interface AKWeChatShareMusic : AKWeChatShareBaseMedia
+
 /**
  音乐与视频的低带网页url地址，长度不能超过10K
  */
-@property (nonatomic, retain) NSString *mediaLowBandURL;
-
-@end
-
-@interface AKWeChatShareMusic : AKWeChatShareWeb
+@property (nonatomic, retain) NSString *lowBandURL;
 
 /**
  音乐数据的url地址，长度不能超过10K
  */
-@property (nonatomic, retain) NSString *dataURL;
+@property (nonatomic, retain) NSString *streamURL;
 
 /**
  音乐数据的url地址，长度不能超过10K
  */
-@property (nonatomic, retain) NSString *lowBandDataURL;
+@property (nonatomic, retain) NSString *lowBandStreamURL;
 
 @end
 
-@interface AKWeChatShareVideo : AKWeChatShareWeb
+#pragma mark - AKWeChatShareVideo
+
+@interface AKWeChatShareVideo : AKWeChatShareBaseMedia
+
+/**
+ 音乐与视频的低带网页url地址，长度不能超过10K
+ */
+@property (nonatomic, retain) NSString *lowBandURL;
 
 @end
