@@ -12,9 +12,9 @@
 
 - (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
     SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
+    request.scene = scene;
     request.bText = YES;
     request.text = self.text;
-    request.scene = scene;
     return request;
 }
 
@@ -57,8 +57,8 @@
 
 - (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
     SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
-    request.message = [self message];
     request.scene = scene;
+    request.message = [self message];
     return request;
 }
 
@@ -72,7 +72,7 @@
     
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = self.title;
-    message.description = self.description;
+    message.description = self.detail;
     message.thumbImage = self.thumbImage;
     message.mediaTagName = self.mediaID;
     message.mediaObject = web;
@@ -92,7 +92,7 @@
     
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = self.title;
-    message.description = self.description;
+    message.description = self.detail;
     message.thumbImage = self.thumbImage;
     message.mediaTagName = self.mediaID;
     message.mediaObject = music;
@@ -110,7 +110,7 @@
     
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = self.title;
-    message.description = self.description;
+    message.description = self.detail;
     message.thumbImage = self.thumbImage;
     message.mediaTagName = self.mediaID;
     message.mediaObject = video;

@@ -40,28 +40,28 @@
 /**
  媒体标识，长度不能超过64字节
  */
-@property (nonatomic, retain) NSString *mediaID;
+@property (nonatomic, copy) NSString *mediaID;
 
 /**
  标题，长度不能超过512字节
  */
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 /**
  描述内容，长度不能超过1K
  */
-@property (nonatomic, retain) NSString *description;
+@property (nonatomic, copy) NSString *detail;
 
 /**
  缩略图，大小不能超过32K
  */
-@property (nonatomic, retain) UIImage *thumbImage;
+@property (nonatomic, copy) UIImage *thumbImage;
 
 /**
  网页的url地址，长度不能超过10K
  支持普通网页，音乐网页，视频网页等
  */
-@property (nonatomic, retain) NSString *URL;
+@property (nonatomic, copy) NSString *URL;
 
 @end
 
@@ -78,17 +78,17 @@
 /**
  音乐与视频的低带网页url地址，长度不能超过10K
  */
-@property (nonatomic, retain) NSString *lowBandURL;
+@property (nonatomic, copy) NSString *lowBandURL;
 
 /**
  音乐数据的url地址，长度不能超过10K
  */
-@property (nonatomic, retain) NSString *streamURL;
+@property (nonatomic, copy) NSString *streamURL;
 
 /**
  音乐数据的url地址，长度不能超过10K
  */
-@property (nonatomic, retain) NSString *lowBandStreamURL;
+@property (nonatomic, copy) NSString *lowBandStreamURL;
 
 @end
 
@@ -99,6 +99,6 @@
 /**
  音乐与视频的低带网页url地址，长度不能超过10K
  */
-@property (nonatomic, retain) NSString *lowBandURL;
+@property (nonatomic, copy) NSString *lowBandURL;
 
 @end
