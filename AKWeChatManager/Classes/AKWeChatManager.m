@@ -131,7 +131,7 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.WeChat.qq.com
     self.manager.shareSuccess = success;
     self.manager.shareFailure = failure;
     
-    SendMessageToWXReq *request = [item messageToScene:scene];
+    SendMessageToWXReq *request = [item requestToScene:scene];
     [WXApi sendReq:request];
 }
 

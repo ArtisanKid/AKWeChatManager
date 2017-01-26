@@ -71,9 +71,9 @@
 
 @end
 
-#pragma mark - AKWeChatShareMusic
+#pragma mark - AKWeChatShareAudio
 
-@interface AKWeChatShareMusic : AKWeChatShareBaseMedia
+@interface AKWeChatShareAudio : AKWeChatShareBaseMedia
 
 /**
  音乐与视频的低带网页url地址，长度不能超过10K

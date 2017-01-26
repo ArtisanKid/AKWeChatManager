@@ -81,7 +81,7 @@
 
 @end
 
-@implementation AKWeChatShareMusic
+@implementation AKWeChatShareAudio
 
 - (WXMediaMessage *)message {
     WXMusicObject *music =  [WXMusicObject object];

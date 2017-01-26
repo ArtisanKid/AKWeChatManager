@@ -16,6 +16,6 @@ typedef NS_ENUM(NSUInteger, AKWeChatShareScene) {
 
 @protocol AKWeChatShareProtocol <NSObject>
 
-- (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene;
+- (SendMessageToWXReq *)requestToScene:(AKWeChatShareScene)scene;
 
 @end
