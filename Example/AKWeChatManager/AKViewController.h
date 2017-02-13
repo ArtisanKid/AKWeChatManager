@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+@import AKWeChatManager;
 
 @interface AKViewController : UIViewController
 

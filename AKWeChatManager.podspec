@@ -54,5 +54,6 @@ TODO: Add long description of the pod here.
 #'OTHER_LDFLAGS' => '$(inherited) -undefined dynamic_lookup',
 #'ENABLE_BITCODE' => 'NO'
     'MACH_O_TYPE' => 'staticlib'
+#'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'No'
   }
 end

@@ -535,9 +535,27 @@
 				INFOPLIST_FILE = "AKWeChatManager/AKWeChatManager-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/LiXiangYu/ArtisanKid/AKWeChatSDK/AKWeChatSDK/Classes/libWeChatSDK.a,
+					"\"${PODS_ROOT}/../../../AKWeChatSDK/AKWeChatSDK/Classes\"",
 				);
 				MODULE_NAME = ExampleApp;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AKWeChatManager\"",
+					"-framework",
+					"\"AKWeChatSDK\"",
+					"-l\"WeChatSDK\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -557,9 +575,27 @@
 				INFOPLIST_FILE = "AKWeChatManager/AKWeChatManager-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/LiXiangYu/ArtisanKid/AKWeChatSDK/AKWeChatSDK/Classes/libWeChatSDK.a,
+					"\"${PODS_ROOT}/../../../AKWeChatSDK/AKWeChatSDK/Classes\"",
 				);
 				MODULE_NAME = ExampleApp;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AKWeChatManager\"",
+					"-framework",
+					"\"AKWeChatSDK\"",
+					"-l\"WeChatSDK\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
