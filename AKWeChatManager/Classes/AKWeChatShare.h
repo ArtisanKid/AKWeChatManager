@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "AKWeChatShareProtocol.h"
 
+/**
+ wiki:https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317332&token=&lang=zh_CN
+ */
+
 #pragma mark - AKWeChatShareText
 
 @interface AKWeChatShareText : NSObject<AKWeChatShareProtocol>
@@ -33,9 +37,9 @@
 
 @end
 
-#pragma mark - AKWeChatShareMedia
+#pragma mark - AKWeChatShareURL
 
-@interface AKWeChatShareBaseMedia: NSObject<AKWeChatShareProtocol>
+@interface AKWeChatShareURL: NSObject<AKWeChatShareProtocol>
 
 /**
  媒体标识，长度不能超过64字节
@@ -67,13 +71,13 @@
 
 #pragma mark - AKWeChatShareWeb
 
-@interface AKWeChatShareWeb : AKWeChatShareBaseMedia
+@interface AKWeChatShareWeb : AKWeChatShareURL
 
 @end
 
 #pragma mark - AKWeChatShareAudio
 
-@interface AKWeChatShareAudio : AKWeChatShareBaseMedia
+@interface AKWeChatShareAudio : AKWeChatShareURL
 
 /**
  音乐与视频的低带网页url地址，长度不能超过10K
@@ -94,7 +98,7 @@
 
 #pragma mark - AKWeChatShareVideo
 
-@interface AKWeChatShareVideo : AKWeChatShareBaseMedia
+@interface AKWeChatShareVideo : AKWeChatShareURL
 
 /**
  音乐与视频的低带网页url地址，长度不能超过10K

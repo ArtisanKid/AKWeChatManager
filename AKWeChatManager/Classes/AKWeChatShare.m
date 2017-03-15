@@ -10,7 +10,7 @@
 
 @implementation AKWeChatShareText
 
-- (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
+- (SendMessageToWXReq *)requestToScene:(AKWeChatShareScene)scene {
     SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
     request.scene = scene;
     request.bText = YES;
@@ -22,19 +22,26 @@
 
 @implementation AKWeChatShareImage
 
-- (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
+- (void)complete:(WXMediaMessage *)message {
+    if([self.thumbImage isKindOfClass:[UIImage class]]) {
+        message.thumbImage = self.thumbImage;
+    }
+    
+    WXImageObject *image = [WXImageObject object];
     NSData *imageData = nil;
     imageData = UIImageJPEGRepresentation(self.image, 1.);
     if(!imageData.length) {
         imageData = UIImagePNGRepresentation(self.image);
     }
-    
-    WXImageObject *image = [WXImageObject object];
-    image.imageData = imageData;
-    
-    WXMediaMessage *message = [WXMediaMessage message];
-    message.thumbImage = self.thumbImage;
+    if(imageData.length) {
+        image.imageData = imageData;
+    }
     message.mediaObject = image;
+}
+
+- (SendMessageToWXReq *)requestToScene:(AKWeChatShareScene)scene {
+    WXMediaMessage *message = [WXMediaMessage message];
+    [self complete:message];
     
     SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
     request.scene = scene;
@@ -44,7 +51,7 @@
 
 @end
 
-@implementation AKWeChatShareBaseMedia
+@implementation AKWeChatShareURL
 
 /**
  子类重载此方法
@@ -55,7 +62,28 @@
     return nil;
 }
 
-- (SendMessageToWXReq *)messageToScene:(AKWeChatShareScene)scene {
+- (void)complete:(WXMediaMessage *)message {
+    if([self.title isKindOfClass:[NSString class]]
+       && self.title.length) {
+        message.title = self.title;
+    }
+    
+    if([self.detail isKindOfClass:[NSString class]]
+       && self.detail.length) {
+        message.description = self.detail;
+    }
+    
+    if([self.thumbImage isKindOfClass:[UIImage class]]) {
+        message.thumbImage = self.thumbImage;
+    }
+    
+    if([self.mediaID isKindOfClass:[NSString class]]
+       && self.mediaID.length) {
+        message.mediaTagName = self.mediaID;
+    }
+}
+
+- (SendMessageToWXReq *)requestToScene:(AKWeChatShareScene)scene {
     SendMessageToWXReq *request = [[SendMessageToWXReq alloc] init];
     request.scene = scene;
     request.message = [self message];
@@ -67,15 +95,16 @@
 @implementation AKWeChatShareWeb
 
 - (WXMediaMessage *)message {
-    WXWebpageObject *web =  [WXWebpageObject object];
-    web.webpageUrl = self.URL;
-    
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = self.title;
-    message.description = self.detail;
-    message.thumbImage = self.thumbImage;
-    message.mediaTagName = self.mediaID;
+    [super complete:message];
+
+    WXWebpageObject *web =  [WXWebpageObject object];
+    if([self.URL isKindOfClass:[NSString class]]
+       && self.URL.length) {
+        web.webpageUrl = self.URL;
+    }
     message.mediaObject = web;
+    
     return message;
 }
 
@@ -84,19 +113,32 @@
 @implementation AKWeChatShareAudio
 
 - (WXMediaMessage *)message {
-    WXMusicObject *music =  [WXMusicObject object];
-    music.musicUrl = self.URL;
-    music.musicLowBandUrl = self.lowBandURL;
-    music.musicDataUrl = self.streamURL;
-    music.musicLowBandDataUrl = self.lowBandStreamURL;
-    
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = self.title;
-    message.description = self.detail;
-    message.thumbImage = self.thumbImage;
-    message.mediaTagName = self.mediaID;
-    message.mediaObject = music;
+    [self complete:message];
     return message;
+}
+
+- (void)complete:(WXMediaMessage *)message {
+    [super complete:message];
+    
+    WXMusicObject *music =  [WXMusicObject object];
+    if([self.URL isKindOfClass:[NSString class]]
+       && self.URL.length) {
+        music.musicUrl = self.URL;
+    }
+    if([self.lowBandURL isKindOfClass:[NSString class]]
+       && self.lowBandURL.length) {
+        music.musicLowBandUrl = self.lowBandURL;
+    }
+    if([self.streamURL isKindOfClass:[NSString class]]
+       && self.streamURL.length) {
+        music.musicDataUrl = self.streamURL;
+    }
+    if([self.lowBandStreamURL isKindOfClass:[NSString class]]
+       && self.lowBandStreamURL.length) {
+        music.musicLowBandDataUrl = self.lowBandStreamURL;
+    }
+    message.mediaObject = music;
 }
 
 @end
@@ -104,17 +146,24 @@
 @implementation AKWeChatShareVideo
 
 - (WXMediaMessage *)message {
-    WXVideoObject *video =  [WXVideoObject object];
-    video.videoUrl = self.URL;
-    video.videoLowBandUrl = self.lowBandURL;
-    
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = self.title;
-    message.description = self.detail;
-    message.thumbImage = self.thumbImage;
-    message.mediaTagName = self.mediaID;
-    message.mediaObject = video;
+    [self complete:message];
     return message;
+}
+
+- (void)complete:(WXMediaMessage *)message {
+    [super complete:message];
+    
+    WXMusicObject *music =  [WXMusicObject object];
+    if([self.URL isKindOfClass:[NSString class]]
+       && self.URL.length) {
+        music.musicUrl = self.URL;
+    }
+    if([self.lowBandURL isKindOfClass:[NSString class]]
+       && self.lowBandURL.length) {
+        music.musicLowBandUrl = self.lowBandURL;
+    }
+    message.mediaObject = music;
 }
 
 @end

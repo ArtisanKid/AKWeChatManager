@@ -12,16 +12,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern const NSString * const AKWeChatManagerErrorCodeKey;
+extern const NSString * const AKWeChatManagerErrorMessageKey;
+extern const NSString * const AKWeChatManagerErrorDetailKey;
+
 typedef void (^AKWeChatManagerSuccess)();
 typedef void (^AKWeChatManagerLoginSuccess)(id<AKWeChatUserProtocol> user);
 typedef void (^AKWeChatManagerFailure)(NSError *error);
 
 @interface AKWeChatManager : NSObject
-
-+ (void)setAppID:(NSString *)appID secretKey:(NSString *)secretKey;
-
-//设置商家ID
-+ (void)setPartnerID:(NSString *)partnerID;
 
 /**
  标准单例模式
@@ -29,6 +28,13 @@ typedef void (^AKWeChatManagerFailure)(NSError *error);
  @return AKWeChatManager
  */
 + (AKWeChatManager *)manager;
+
+@property (class, nonatomic, assign, getter=isDebug) BOOL debug;
+
++ (void)setAppID:(NSString *)appID secretKey:(NSString *)secretKey;
+
+//设置商家ID
++ (void)setPartnerID:(NSString *)partnerID;
 
 //处理从Application回调方法获取的URL
 + (BOOL)handleOpenURL:(NSURL *)url;
