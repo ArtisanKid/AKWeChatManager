@@ -528,34 +528,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				DEVELOPMENT_TEAM = HCU65H62VB;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AKWeChatManager/AKWeChatManager-Prefix.pch";
 				INFOPLIST_FILE = "AKWeChatManager/AKWeChatManager-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_ROOT}/../../../AKWeChatSDK/AKWeChatSDK/Classes\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-framework",
-					"\"AFNetworking\"",
-					"-framework",
-					"\"AKWeChatManager\"",
-					"-framework",
-					"\"AKWeChatSDK\"",
-					"-l\"WeChatSDK\"",
-					"-l\"c++\"",
-					"-l\"sqlite3\"",
-					"-l\"z\"",
-					"-framework",
-					"\"CoreTelephony\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.artisankid.ElementWar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -568,34 +548,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				DEVELOPMENT_TEAM = HCU65H62VB;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AKWeChatManager/AKWeChatManager-Prefix.pch";
 				INFOPLIST_FILE = "AKWeChatManager/AKWeChatManager-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_ROOT}/../../../AKWeChatSDK/AKWeChatSDK/Classes\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-framework",
-					"\"AFNetworking\"",
-					"-framework",
-					"\"AKWeChatManager\"",
-					"-framework",
-					"\"AKWeChatSDK\"",
-					"-l\"WeChatSDK\"",
-					"-l\"c++\"",
-					"-l\"sqlite3\"",
-					"-l\"z\"",
-					"-framework",
-					"\"CoreTelephony\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.artisankid.ElementWar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

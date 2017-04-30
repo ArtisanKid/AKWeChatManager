@@ -7,10 +7,10 @@
 //
 
 #import "AKWeChatManager.h"
-#import "AKWeChatManagerMacro.h"
 #import <AKWeChatSDK/WXApi.h>
 #import <AKWeChatSDK/WXApiObject.h>
 #import <AFNetworking/AFNetworking.h>
+#import "AKWeChatManagerMacro.h"
 #import "AKWeChatUser.h"
 
 const NSString * const AKWeChatManagerErrorCodeKey = @"code";
@@ -146,7 +146,7 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.weixin.qq.com
         scene:(AKWeChatShareScene)scene
       success:(AKWeChatManagerSuccess)success
       failure:(AKWeChatManagerFailure)failure {
-    //相关文档在这里：https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317851&token=&lang=zh_CN
+    //相关文档在这里：https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317332&token=&lang=zh_CN
     
     if(![self.manager checkAppInstalled]) {
         [self.manager failure:failure message:@"未安装微信"];
@@ -180,7 +180,8 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.weixin.qq.com
        sign:(NSString *)sign
     success:(AKWeChatManagerSuccess)success
     failure:(AKWeChatManagerFailure)failure {
-    //相关文档在这里：https://pay.WeChat.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2
+    //App开发步骤：https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5
+    //接口参数说明：https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2
     
     AKWXM_String_Nilable_Return(self.manager.appID, NO, {
         [self.manager failure:failure message:@"未设置appID"];
@@ -273,7 +274,7 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.weixin.qq.com
     }
     
     if ([resp isKindOfClass:[SendAuthResp class]]) {
-        SendAuthResp *loginResponse = (SendAuthReq *)resp;
+        SendAuthResp *loginResponse = (SendAuthResp *)resp;
         AKWeChatManagerLoginSuccess success = self.loginSuccess;
         AKWeChatManagerFailure failure = self.loginFailure;
         
@@ -350,8 +351,6 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.weixin.qq.com
      progress:^(NSProgress * _Nonnull downloadProgress) {
          
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-         NSDictionary *userInfo = nil;
-         
          /* {"errcode":40029,"errmsg":"invalid code"} */
          
          NSInteger code = [responseObject[@"errcode"] integerValue];
@@ -438,8 +437,6 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.weixin.qq.com
      progress:^(NSProgress * _Nonnull downloadProgress) {
          
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-         NSDictionary *userInfo = nil;
-         
          /* {"errcode":40030,"errmsg":"invalid refresh_token"}*/
          
          NSInteger code = [responseObject[@"errcode"] integerValue];
@@ -500,8 +497,6 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.weixin.qq.com
      progress:^(NSProgress * _Nonnull downloadProgress) {
          
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-         NSDictionary *userInfo = nil;
-         
          /* {"errcode":40003,"errmsg":"invalid openid"} */
          
          NSInteger code = [responseObject[@"errcode"] integerValue];

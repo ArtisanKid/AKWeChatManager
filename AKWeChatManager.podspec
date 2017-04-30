@@ -37,10 +37,11 @@ TODO: Add long description of the pod here.
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+
+  s.frameworks = 'CFNetwork', 'CoreGraphics', 'CoreTelephony', 'MobileCoreServices', 'Security','SystemConfiguration'
+  s.libraries = 'c++', 'sqlite3', 'z'
 
   s.dependency 'AFNetworking'
-
   s.dependency 'AKWeChatSDK'
 
   #静态库传递详细资料查看这里 http://luoxianming.cn/2016/03/27/CocoaPods/
@@ -51,9 +52,7 @@ TODO: Add long description of the pod here.
   #end
 
   s.pod_target_xcconfig = {
-#'OTHER_LDFLAGS' => '$(inherited) -undefined dynamic_lookup',
-#'ENABLE_BITCODE' => 'NO'
-    'MACH_O_TYPE' => 'staticlib'
-#'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'No'
+    'OTHER_LDFLAGS' => '-l"WeChatSDK"',
+    'LIBRARY_SEARCH_PATHS' => '$(PODS_ROOT)/AKWeChatSDK/**'
   }
 end

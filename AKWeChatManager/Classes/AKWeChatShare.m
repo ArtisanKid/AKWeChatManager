@@ -96,16 +96,19 @@
 
 - (WXMediaMessage *)message {
     WXMediaMessage *message = [WXMediaMessage message];
-    [super complete:message];
+    [self complete:message];
+    return message;
+}
 
+- (void)complete:(WXMediaMessage *)message {
+    [super complete:message];
+    
     WXWebpageObject *web =  [WXWebpageObject object];
     if([self.URL isKindOfClass:[NSString class]]
        && self.URL.length) {
         web.webpageUrl = self.URL;
     }
     message.mediaObject = web;
-    
-    return message;
 }
 
 @end
