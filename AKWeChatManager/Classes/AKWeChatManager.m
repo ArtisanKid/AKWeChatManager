@@ -93,6 +93,7 @@ static NSString * const AKWeChatManagerUserInfoURL = @"https://api.weixin.qq.com
 
 + (BOOL)handleOpenURL:(NSURL *)url {
     BOOL handle = [WXApi handleOpenURL:url delegate:self.manager];
+    return handle;
 }
 
 + (void)loginSuccess:(AKWeChatManagerLoginSuccess)success

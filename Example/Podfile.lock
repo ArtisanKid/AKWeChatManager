@@ -21,19 +21,24 @@ PODS:
 
 DEPENDENCIES:
   - AKWeChatManager (from `../`)
-  - AKWeChatSDK (from `../../AKWeChatSDK`)
+  - AKWeChatSDK (from `git@github.com:ArtisanKid/AKWeChatSDK.git`)
 
 EXTERNAL SOURCES:
   AKWeChatManager:
     :path: ../
   AKWeChatSDK:
-    :path: ../../AKWeChatSDK
+    :git: git@github.com:ArtisanKid/AKWeChatSDK.git
+
+CHECKOUT OPTIONS:
+  AKWeChatSDK:
+    :commit: 9fbc61c87f2ec988d94b28e05f39acedfce28fd5
+    :git: git@github.com:ArtisanKid/AKWeChatSDK.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AKWeChatManager: 3afdca798a327cdcc7cfe8fed2450383d136ef95
-  AKWeChatSDK: 777c25ef040bfa99822be1633d77373762208b45
+  AKWeChatManager: ac6d2bd88ebbaac09609f2166f5c123ce1bbe2e2
+  AKWeChatSDK: 443a65f61dddaf2aebed38ceef49223e2e3b1e97
 
-PODFILE CHECKSUM: c6c8c8450dfa14029b25a2de339c2b4ef5bc079f
+PODFILE CHECKSUM: 7973bf3b86569956d01caaa42235b8f65149c9e5
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1
