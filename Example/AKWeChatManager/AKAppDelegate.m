@@ -14,8 +14,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [AKWeChatManager setAppID:@"wxa8dd1da7c42c4ebe" secretKey:@"5c5481bb1457fe415036737ffa8394cf"];
-    AKWeChatManager.debug = YES;
     
     return YES;
 }

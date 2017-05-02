@@ -51,8 +51,13 @@ TODO: Add long description of the pod here.
     #def installer.verify_no_static_framework_transitive_dependencies; end
   #end
 
+  #为什么需要-ObjC参数？
+  #苹果官方Q&A上有这么一段话：
+  #The "selector not recognized" runtime exception occurs due to an issue between the implementation of standard UNIX static libraries, the linker and the dynamic nature of Objective-C. Objective-C does not define linker symbols for each function (or method, in Objective-C) - instead, linker symbols are only generated for each class. If you extend a pre-existing class with categories, the linker does not know to associate the object code of the core class implementation and the category implementation. This prevents objects created in the resulting application from responding to a selector that is defined in the category.
+  #翻译:运行时的异常时由于静态库,链接器,与OC语言的动态的特性之间的问题,OC语言并不是对每一个函数或者方法建立符号表,而只是对每一个类创建了符号表.如果一个类有了分类,那么链接器就不会将核心类与分类之间的代码完成进行合并,这就阻止了在最终的应用程序中的可执行文件缺失了分类中的代码,这样函数调用接失败了.
+
   s.pod_target_xcconfig = {
-    'OTHER_LDFLAGS' => '-l"WeChatSDK"',
+    'OTHER_LDFLAGS' => '-ObjC -l"WeChatSDK"',
     'LIBRARY_SEARCH_PATHS' => '$(PODS_ROOT)/AKWeChatSDK/**'
   }
 end
